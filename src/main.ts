@@ -1,15 +1,18 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { createHead } from '@vueuse/head'
-import { store } from './store'
-import './assets/index.postcss'
+import store from './store'
 
-const head = createHead()
-const app = createApp(App)
+// import '@/scss/main.scss'
+import i18n from './i18n'
 
-app.use(store)
-app.use(router)
-app.use(head)
+import './assets/tailwind.css'
 
-app.mount('#app')
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  store,
+  i18n,
+  render: (h) => h(App),
+}).$mount('#app')
